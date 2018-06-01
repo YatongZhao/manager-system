@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '8'
+sudo: enabled
+addons:
+  ssh_known_hosts: 47.52.171.181
+  apt:
+    update: true
+after_success:
+- ssh -tt root@47.52.171.181 < ./script/deploy.sh
+before_install:
+- chmod 600 ~/.ssh/id_rsa
