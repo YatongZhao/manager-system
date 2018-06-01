@@ -61,7 +61,7 @@ export default {
   async created () {
     let {data} = await this.$http({
       method: 'get',
-      url: 'http://zyt76/api/skill.json'
+      url: this.$url.home
     })
     this.tableData = data
   }
