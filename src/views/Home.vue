@@ -1,9 +1,12 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header>
+      Header
+      <el-button>返回首页</el-button>
+    </el-header>
     <el-container>
       <el-aside >
-        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
@@ -22,30 +25,18 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
         <el-table size="mini" :data="tableData" style="width: 100%">
           <el-table-column prop="name" label="skill"></el-table-column>
-          <el-table-column label="handle">
+          <el-table-column header-align="center" label="handle" width="70">
             <template slot-scope="scope">
               <el-button size="mini">删除</el-button>
-              <el-button size="mini">修改</el-button>
             </template>
           </el-table-column>
         </el-table>
+        <el-button class="add" type="primary">添加</el-button>
       </el-main>
     </el-container>
   </el-container>
@@ -55,13 +46,15 @@
 export default {
   data () {
     return {
-      tableData: []
+      tableData: [],
+      isCollapse: true
     }
   },
   async created () {
     let {data} = await this.$http({
       method: 'get',
-      url: this.$url.home
+      url: this.$url.home,
+      withCredentials: true,
     })
     this.tableData = data
   }
@@ -69,5 +62,9 @@ export default {
 </script>
 
 <style>
-
+.add {
+  width: 100%;
+  border-radius: 0;
+  border: none;
+}
 </style>

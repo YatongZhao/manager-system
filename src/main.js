@@ -7,6 +7,7 @@ import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import url from './api/url.js'
+import './styles/init.css'
 
 Vue.prototype.$http = axios
 Vue.prototype.$url = url
