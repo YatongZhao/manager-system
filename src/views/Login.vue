@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       loginForm: {
         name: '',
@@ -46,8 +46,8 @@ export default {
         url: this.$url.login,
         withCredentials: true,
         data: {
-          name: 'zs',
-          password: '12345678'
+          name: loginForm.name,
+          password: loginForm.region
         }
       })
       console.log(data)

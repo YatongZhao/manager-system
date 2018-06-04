@@ -54,7 +54,7 @@ export default {
     let {data} = await this.$http({
       method: 'get',
       url: this.$url.home,
-      withCredentials: true,
+      withCredentials: true
     })
     this.tableData = data
   }
