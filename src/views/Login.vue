@@ -19,7 +19,7 @@
               <el-input v-model="loginForm.region"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button class="submit" type="primary" @click="onSubmit">登录</el-button>
+              <el-button class="submit" type="primary" @click="onSubmit('form')">登录</el-button>
             </el-form-item>
           </el-form>
         </el-card>
@@ -48,22 +48,29 @@ export default {
     }
   },
   methods: {
-    async onSubmit () {
-      let {data} = await this.$http({
-        method: 'post',
-        url: this.$url.login,
-        withCredentials: true,
-        data: {
-          name: this.loginForm.name,
-          password: this.loginForm.region
+    onSubmit (formName) {
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          let {data} = await this.$http({
+            method: 'post',
+            url: this.$url.login,
+            withCredentials: true,
+            data: {
+              name: this.loginForm.name,
+              password: this.loginForm.region
+            }
+          })
+          console.log(data)
+          if (data.code === 0) {
+            this.$router.push('/')
+          } else {
+            this.$message.success(data.msg)
+          }
+        } else {
+          this.$message.error('请检查表单是否完整')
+          return false
         }
       })
-      console.log(data)
-      if (data.code === 0) {
-        this.$router.push('/')
-      } else {
-        this.$message.success(data.msg)
-      }
     }
   }
 }
