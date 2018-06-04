@@ -11,11 +11,11 @@
     <el-row>
       <el-col :span="8" :offset="8">
         <el-card shadow="hover" class="box-card">
-          <el-form label-position="right" label-width="40px" :model="loginForm">
-            <el-form-item label="账号">
+          <el-form label-position="right" label-width="40px" :model="loginForm" :rules="rules" ref="form">
+            <el-form-item label="账号" prop="name">
               <el-input v-model="loginForm.name"></el-input>
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item label="密码" prop="region">
               <el-input v-model="loginForm.region"></el-input>
             </el-form-item>
             <el-form-item>
@@ -36,6 +36,14 @@ export default {
       loginForm: {
         name: '',
         region: ''
+      },
+      rules: {
+        name: [
+          { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
+        region: [
+          { required: true, message: '请输入密码', trigger: 'blur'}
+        ]
       }
     }
   },
@@ -46,11 +54,16 @@ export default {
         url: this.$url.login,
         withCredentials: true,
         data: {
-          name: loginForm.name,
-          password: loginForm.region
+          name: this.loginForm.name,
+          password: this.loginForm.region
         }
       })
       console.log(data)
+      if (data.code === 0) {
+        this.$router.push('/')
+      } else {
+        this.$message.success(data.msg)
+      }
     }
   }
 }
