@@ -6,11 +6,11 @@
   <el-container>
     <el-header>
       Header
-      <el-button>返回首页</el-button>
+      <!-- <el-button>返回首页</el-button> -->
     </el-header>
     <el-container>
       <el-aside >
-        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse">
+        <!-- <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
@@ -29,14 +29,14 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu>
-        </el-menu>
+        </el-menu> -->
       </el-aside>
       <el-main>
         <el-table size="mini" :data="tableData" style="width: 100%">
           <el-table-column prop="name" label="skill"></el-table-column>
           <el-table-column header-align="center" label="handle" width="70">
             <template slot-scope="scope">
-              <el-button @click="handleDelete(scope.row.id)" size="mini">删除</el-button>
+              <el-button @click="handleDelete(scope.row.id, scope.$index)" size="mini">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -92,17 +92,15 @@ export default {
           })
           console.log(data)
           if (data.code === 0) {
+            console.log(data.data)
+            this.$set(this.tableData, this.tableData.length, data.data)
             this.$message.success('添加skill成功')
           }
           this.dialogVisible = false
-        } else {
-          // this.$message.error('请检查输入!')
-          return false
         }
       })
     },
-    async handleDelete (id) {
-      console.log(id)
+    async handleDelete (id, index) {
       let {data} = await this.$http({
         method: 'post',
         url: this.$url.skill.remove,
@@ -112,6 +110,7 @@ export default {
         }
       })
       if (data.code === 0) {
+        this.tableData.splice(index, 1)
         this.$message.success('删除成功')
       }
     }
@@ -122,7 +121,9 @@ export default {
       url: this.$url.home,
       withCredentials: true
     })
-    this.tableData = data
+    if (data.code === 0) {
+      this.tableData = data.data
+    }
   }
 }
 </script>
