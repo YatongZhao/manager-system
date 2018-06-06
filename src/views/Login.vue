@@ -1,3 +1,6 @@
+<docs>
+  ## 这是登录组件
+</docs>
 <template>
 <el-container>
   <el-header>

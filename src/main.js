@@ -3,11 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import url from './api/url.js'
 import './styles/init.css'
+import axios from './api/axios.js'
 
 Vue.prototype.$http = axios
 Vue.prototype.$url = url
