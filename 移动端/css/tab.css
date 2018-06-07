@@ -1,0 +1,79 @@
+a{
+    text-decoration:none;
+}
+.mui-segmented-control{
+    border: 0;
+    background-color: #fff;
+    z-index: 99;
+}
+.mui-segmented-control .mui-control-item{
+    border-left: 0;
+    color: #bbbbbb;
+}
+.mui-segmented-control .mui-control-item.mui-active{
+    background-color: #fff;
+    color: #ff8811;    
+}
+.tab li{
+    display: inline-block;
+    color: #ff8811;
+    font-size: 0.9rem;
+    border: 1px solid #ff8811;
+    border-radius: 0.9rem;
+    width: 5.4rem; 
+    margin-top: 0.9rem;
+    height: 1.8rem;
+    line-height: 0.6rem;
+    text-align: center;
+}
+.tab .kuan{
+    font-size: 0.8rem;
+    width: 6.5rem;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    padding: 0;
+}
+.tab .act{
+    background-color: #ff8811;
+    color: #fff;
+}
+.select{
+    width: 100%;
+    height: 2.3rem;
+}
+.select .cancel,
+.select .confirm{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    
+}
+.select .cancel{
+    float: left;
+    height: 100%;
+    line-height: 2.3rem;
+    background-color: #f4f4f4;
+    
+}
+.select .confirm{
+    float: right;
+    background-color: #ff8811;
+    color: #fff;
+    height: 100%;
+    line-height: 2.3rem;
+}
+.mui-control-content.mui-active{
+        z-index: 9;
+}
+.item1,
+.item2,
+.item3{
+    position: absolute;
+    z-index: 999;
+    background-color: #ffffff;
+    display: none;
+}
+
+.mui-segmented-control .mui-control-item.mui-active{
+    text-decoration: none;
+}

@@ -1,0 +1,52 @@
+body{
+    background-color: #fff;
+}
+.header{
+    width: 100%;
+    background-color: #ff8811;
+    height: 2rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+.mui-search {
+    width: 80%;
+    margin-left: 1rem;
+    display: inline-block;
+}
+input[type='search']{
+     background-color:#fff;
+     height: 30px;
+     border-radius: 15px;
+}
+.mui-search .mui-placeholder{
+    top: 4px;
+}
+.header .mui-active{
+  top: 0.45rem;
+  line-height: 1.2rem;
+}
+.mui-input-row .mui-input-clear ~ .mui-icon-clear{
+    color:#bbbbbb;
+}
+.header .quxiao{
+    color: #fff;
+    float: right;
+    margin-right: 0.7rem;
+    font-size: 0.9rem;
+}
+.maybe{
+    width: 100%;
+    padding: 2rem 3rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+.maybe span{
+    display: inline-block;
+    color: #ff8811;
+    font-size: 0.8rem;
+    width: 32%;
+    margin-bottom: 1rem;
+}
+.maybe p{
+    margin-bottom: 1.5rem;
+}

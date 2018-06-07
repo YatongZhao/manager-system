@@ -1,0 +1,138 @@
+.bianji{
+    float: right;
+}
+.mui-bar{
+   background-color: #ff8811;
+}
+.mui-bar .mui-btn-link,
+a{
+   color: #fff;
+}
+input[type='search']{
+    background-color: #fff;
+    
+}
+.mui-title .searc{
+    width: 74%;
+    margin: 0 auto;
+}
+.mui-search .mui-placeholder{
+    line-height: 46px;
+}
+.mui-bar .mui-input-row .mui-input-clear ~ .mui-icon-clear{
+    top: 12px;
+    color: #bbbbbb;
+}
+.mui-title .mui-active{
+    top: 2px;
+  line-height: 20px;
+}
+
+.org{
+    color:#ff8811;
+    float: right;
+    display: inline;
+    margin-top: -20px;
+}
+.mui-table-view .mui-media-object{
+    max-width: 35%;
+}
+.all{
+    width: 100%;
+    background-color: #f4f4f4;
+    height: 41px;
+   
+    line-height: 26px;
+}
+ 
+.all {
+           
+    height: 30px;
+        }
+.all span {
+    margin-left: 14px;
+    font-size: 13px;
+}
+::-webkit-scrollbar {
+display: none;/*隐藏滚轮*/
+}
+.mui-content{
+    /* overflow: scroll;  */
+    height: 455px;
+}
+
+.foot{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 78px;
+}
+.foot .top{
+    text-align: center;
+    height: 33px;
+    line-height: 33px;
+    font-size: 13px;
+    color: #666666;
+    background: #f4f4f4;
+}
+
+.foot .bottom{
+  text-align: center;
+  height: 46px;
+  background-color: #e6e6e6;
+}
+
+.foot .bottom .left{
+    width: 50%;
+    line-height: 46px;
+    color: #333333;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e6e6e6;
+}
+
+.foot .bottom .right{
+    width: 50%;
+    line-height: 45px;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ff8811;
+    color: #fff;
+}
+.share-container div {
+    /* font-size: 12px; */
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+.share-container img{
+    width: 2.5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.share-container span{
+    display: block;
+    margin: 0 auto;
+    font-size: 0.6rem;
+    text-align: center;
+}
+.mui-bar .mui-btn {
+        font-weight: normal;
+        font-size: 17px;
+}
+.mui-bar-nav ~ .mui-content .mui-pull-top-pocket{
+        top: 15%;
+}
+.mui-table-view:after {
+position: absolute;
+right: 0;
+bottom: 0;
+left: 0;
+height: 0px;
+content: '';
+-webkit-transform: scaleY(.5);
+transform: scaleY(.5);
+background-color: #c8c7cc;
+}

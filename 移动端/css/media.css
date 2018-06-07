@@ -1,0 +1,64 @@
+ @media screen and (min-width:320px) {
+        html,body {
+            font-size: 16px;
+        }
+        p{
+            font-size: 12px;
+        }
+        .mui-media-in span{
+            font-size: 14px;
+        }
+        .mui-title .searc{
+            width: 68%;
+        }
+        .org .big{
+            font-size: 14px;
+        }
+        .org i{
+            font-size: 12px;
+        }
+        
+    }
+
+    @media screen and (min-width:360px) {
+        html,body,p {
+            font-size: 18px;
+        }
+        p{
+            font-size: 13px;
+            margin-top: 3px
+        }
+        .mui-media-in span{
+            font-size: 14px;
+        }
+        
+    }
+
+    @media screen and (min-width:750px) {
+        html,body {
+            font-size: 37.5px;
+        }
+        p,span{
+            font-size: 20px;
+        }
+        .mui-media-in span{
+            font-size: 24px;
+        }
+        .mui-table-view-cell p{
+            margin-top: 10px;
+        }
+        .org{
+            margin-top: -36px;
+        }
+        .org .big{
+            font-size: 37px;
+        }
+        .org i{
+            font-size: 20px;
+        }
+    }
+
+    html,
+    body {
+        background-color: #efeff4;
+    }

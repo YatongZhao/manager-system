@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>煤之易</title>
+    <link rel="stylesheet" href="./css/mui.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/media.css">
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/tab.css">
+
+    <script src="./js/mui.js"></script>
+    <script src="./js/NativeShare.js"></script>
+    <script src="./js/jquery-2.1.4.min.js"></script>
+
+
+</head>
+<style>
+    .mui-control-item{
+        cursor: pointer;
+    }
+    @media screen and (min-width:320px) {
+        html,
+        body {
+            font-size: 16px;
+        }
+        p {
+            font-size: 12px;
+        }
+        .mui-media-in span {
+            font-size: 14px;
+        }
+        .mui-title .searc {
+            width: 66%;
+        }
+        .org .big {
+            font-size: 14px;
+        }
+        .org i {
+            font-size: 12px;
+        }
+        .foot-on {
+            height: 40px;
+            line-height: 40px;
+        }
+        .foot-on span {
+            font-size: 16px;
+            margin-left: 16px;
+        }
+        .foot-on .foot-on-in {
+            width: 280px;
+        }
+    }
+
+    @media screen and (max-width:320px) {
+        .tab li {
+            width: 6.4rem;
+            line-height: 1.8rem;
+            padding: 0;
+        }
+        .mui-search .mui-placeholder {
+            font-size: 15px;
+        }
+        .mui-bar .mui-pull-left .mui-icon {
+            font-size: 26px;
+        }
+        .mui-bar .mui-btn .mui-icon {
+            top: 3px;
+        }
+        .mui-bar .mui-btn {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width:360px) {
+        .tab .kuan {
+            width: 6rem;
+        }
+    }
+
+
+    @media screen and (min-width:360px) {
+        html,
+        body {
+            font-size: 18px;
+        }
+        p {
+            font-size: 13px;
+            margin-top: 3px
+        }
+        .org .big {
+            font-size: 18px;
+        }
+        .org i {
+            font-size: 13px;
+        }
+        .mui-media-in span {
+            font-size: 14px;
+        }
+        .foot-on {
+            height: 40px;
+            line-height: 40px;
+        }
+        .foot-on span {
+            font-size: 16px;
+            margin-left: 16px;
+        }
+        .foot-on .foot-on-in {
+            width: 280px;
+        }
+    }
+
+    @media screen and (min-width:750px) {
+        html,
+        body {
+            font-size: 37.5px;
+        }
+        p,
+        span {
+            font-size: 20px;
+        }
+        .mui-media-in span {
+            font-size: 24px;
+        }
+        .mui-table-view-cell p {
+            margin-top: 10px;
+        }
+        .org {
+            margin-top: -36px;
+        }
+        .org .big {
+            font-size: 37px;
+        }
+        .org i {
+            font-size: 20px;
+        }
+        .all {
+            height: 41px;
+        }
+        .all span {
+            font-size: 18px;
+        }
+        .foot-on {
+            height: 66px;
+            line-height: 52px;
+        }
+        .foot-on span {
+            font-size: 20px;
+            margin-left: 24px;
+        }
+        .foot-on .foot-on-in {
+            width: 360Px;
+        }
+        .foot .bottom .right,
+        .foot .bottom .left {
+            line-height: 57px;
+            font-size: 24px;
+        }
+        .foot .top {
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+        }
+        .foot {
+            height: 96px;
+        }
+    }
+
+
+    html,
+    body {
+        background-color: #efeff4;
+    }
+
+    .mui-bar .mui-pull-left .mui-icon {
+        padding-right: 5px;
+        font-size: 28px;
+    }
+
+
+
+    .mui-bar .mui-btn-link {
+        top: 1px;
+    }
+
+    #share,
+    #copy-link-box {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    #share .back-drop,
+    #copy-link-box .back-drop {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    #share .share-container,
+    #copy-link-box .copy-link-container {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #fff;
+        width: 100%;
+        z-index: 2;
+        transform: translate3d(0, 100%, 0);
+        transition: all 0.3s;
+    }
+    
+    #share .share-container {
+        height: 13rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #copy-link-box .copy-link-container {
+        padding: 1rem;
+    }
+    #copy-link-box .copy-link-container a {
+        color: black;
+        text-decoration: none;
+    }
+
+    #share.show,
+    #copy-link-box.show {
+        z-index: 1000;
+    }
+
+    #share.show .back-drop,
+    #copy-link-box.show .back-drop {
+        opacity: 1;
+    }
+
+    #share.show .share-container,
+    #copy-link-box.show .copy-link-container {
+        transform: translate3d(0, 0, 0);
+    }
+
+    #share .share-container .share-item {
+        width: 25%;
+        height: 4rem;
+        margin-bottom: -5rem;
+    }
+
+    #share .close {
+        display: block;
+        position: absolute;
+        bottom: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    #copy-link-a {
+        word-wrap: break-word;
+        font-size: .8rem;
+        text-align: center;
+        /* border: 1px dashed gray; */
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+a:after{
+      text-decoration: none;
+}
+</style>
+
+<body>
+    <header id="header" class="mui-bar mui-bar-nav" style="z-index: 9999999;">
+        <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left city">
+            北京<span class="mui-icon mui-icon-arrowdown"></span></button>
+        <h1 class="mui-title">
+            <div class="mui-input-row mui-search searc">
+                <input type="search" class="mui-input-clear" placeholder="请输入社区名称">
+        </h1>
+
+    </header>
+    <div style="margin-top: 2.4rem;">
+        <div class="mui-segmented-control">
+            <a class="mui-control-item posit1">
+				选择区县
+			</a>
+            <a class="mui-control-item posit2">
+				社区类型
+			</a>
+            <a class="mui-control-item posit3">
+				选择商圈
+			</a>
+        </div>
+    </div>
+    <div>
+
+        <div class="item1 item">
+            <ul class="tab">
+                <li class="mui-table-view-cell clc quanbu1">
+                    全部
+                </li>
+                <li class="mui-table-view-cell clc">
+                    朝阳区
+                </li>
+                <li class="mui-table-view-cell clc">
+                    海淀区
+                </li>
+                <li class="mui-table-view-cell clc">
+                    石景山区
+                </li>
+                <li class="mui-table-view-cell clc">
+                    丰台区
+                </li>
+            </ul>
+            <div class="select">
+                <div class="cancel">取消</div>
+                <div class="confirm">确定</div>
+            </div>
+        </div>
+        <div class="item2 item">
+            <ul class="tab">
+                <li class="mui-table-view-cell clc quanbu2 kuan">
+                    全部
+                </li>
+                <li class="mui-table-view-cell clc kuan">
+                    A-AP 高级公寓
+                </li>
+                <li class="mui-table-view-cell clc kuan">
+                    B-AP 商住楼
+                </li>
+                <li class="mui-table-view-cell clc kuan">
+                    PLAZA 写字楼
+                </li>
+                <li class="mui-table-view-cell clc kuan">
+                    R-AP 社区
+                </li>
+            </ul>
+            <div class="select">
+                <div class="cancel">取消</div>
+                <div class="confirm">确定</div>
+            </div>
+        </div>
+        <div class="item3 item">
+            <ul class="tab">
+                <li class="mui-table-view-cell  clc quanbu3">
+                    全部
+                </li>
+                <li class="mui-table-view-cell clc">
+                    商圈名称
+                </li>
+                <li class="mui-table-view-cell clc">
+                    商圈名称
+                </li>
+                <li class="mui-table-view-cell clc">
+                    商圈名称
+                </li>
+                <li class="mui-table-view-cell clc">
+                    商圈名称
+                </li>
+            </ul>
+            <div class="select">
+                <div class="cancel">取消</div>
+                <div class="confirm">确定</div>
+            </div>
+        </div>
+    </div>
+    <!-- <a href="#picture" class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" style="padding: 5px 20px; background-color:pink"></a> -->
+
+    <div class="all"><span>共有356个社区</span><span>3275275个点位</span></div>
+    <div class="mui-content" id="pullrefresh">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./images/图层-1.png">
+						<div class="mui-media-body">
+                            <div class="mui-media-in">
+							<span>龙岗安居里</span> <span>2009年入住</span>
+							<p class='mui-ellipsis'>H-ap  高级公寓</p>
+                            <p class='mui-ellipsis'>25栋<i>/</i>10单元<i>/</i>50部电梯<i>/</i>150户</p>
+                            <p class='mui-ellipsis'>团结湖白家庄XXX号楼 </p>
+                            </div>
+                        <div class="org"><i class="big">130</i><i>块点位</i></div>
+                        </div>
+                        
+					</a>
+            </li>
+     
+
+        </ul>
+    </div>
+    <div class="foot">
+        <div class="top">
+            媒体管理云SAAS 媒之易 @2018
+        </div>
+        <div class="bottom">
+            <div class="left">
+                王封样 销售经理
+            </div>
+            <div class="right">
+                <a href="tel:22222222" id="icon-phone"><span class="mui-icon mui-icon-phone"></span>免费咨询</a> 
+            </div>
+        </div>
+    </div>
+
+
+    <div id="share">
+        <div class="back-drop"></div>
+        <div class="share-container">
+            <div id="qqFriend" class="share-item">
+                <img src="./images/icon@3x.png" alt=""><span>QQ好友</span></div>
+            <div id="qZone" class="share-item">
+                <img src="./images/icon_1@2x.png" alt=""><span>QQ空间</span></div>
+            <div id="wechatFriend" class="share-item">
+                <img src="./images/icon_2@2x.png" alt=""><span>微信好友</span></div>
+            <div id="wechatTimeline" class="share-item">
+                <img src="./images/icon_3@3x.png" alt=""><span>朋友圈</span></div>
+            <div id="weibo" class="share-item" style="margin-top: -1rem;">
+                <img src="./images/icon_4@3x.png" alt=""><span>新浪微博</span></div>
+            <div id="copyLink" class="share-item" style="margin-top: -1rem;">
+                <img src="./images/icon_5@2x.png" alt=""><span>复制链接</span></div>
+            <div class="close">取消</div>
+        </div>
+    </div>
+
+    <div id="copy-link-box">
+        <div class="back-drop"></div>
+        <div class="copy-link-container">
+            <p>长按复制下方链接，去粘贴给好友吧：</p>
+            <a href="#" id="copy-link-a"></a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    mui.init({
+        pullRefresh: {
+            container: '#pullrefresh',
+            down: {
+                style:'circle',
+                color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+                height:'100px',//可选,默认50px.下拉刷新控件的高度,
+                range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+                offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+                auto: true,//可选,默认false.首次加载自动上拉刷新一次
+                callback: pulldownRefresh
+            },
+            up: {
+                height:100,//可选.默认50.触发上拉加载拖动距离
+                auto:true,//可选,默认false.自动上拉加载一次
+                contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容
+                callback: pullupRefresh
+            }
+        }
+    });
+    
+    function pulldownRefresh() {
+        setTimeout(function () {
+            mui('#pullrefresh').pullRefresh().endPulldownToRefresh(true); //refresh completed没有新数据
+            // mui('#pullrefresh').pullRefresh().endPulldownToRefresh(false); //refresh completed有新数据
+        }, 1500);
+    }
+    var count = 0;
+    /**
+     * 上拉加载具体业务实现
+     */
+    function pullupRefresh() {
+        setTimeout(function () {
+            mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+            // mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为false代表有更多数据。
+            // var table = document.body.querySelector('.mui-table-view');
+            // var cells = document.body.querySelectorAll('.mui-table-view-cell');
+
+        }, 1500);
+    }
+    if (mui.os.plus) {
+        mui.plusReady(function () {
+            setTimeout(function () {
+                // mui('#pullrefresh').pullRefresh().pullupLoading();
+            }, 1000);
+
+        });
+    } else {
+        mui.ready(function () {
+            // mui('#pullrefresh').pullRefresh().pullupLoading();
+        });
+    }
+    var header = document.getElementById("header");
+
+    var rightbtn = document.createElement('button');
+    rightbtn.className = 'mui-btn mui-btn-blue mui-btn-link bianji';
+    var fenxiang = document.createElement('a');
+    // fenxiang.href="#picture";
+    fenxiang.innerText = '分享';
+    fenxiang.id = 'share-btn';
+    fenxiang.style.marginLeft = '0.4rem';
+    
+    rightbtn.appendChild(fenxiang);
+    header.appendChild(rightbtn);
+    //右侧icon
+    // <a href="#picture" class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" style="padding: 5px 20px;">打开actionsheet</a>
+    var righticon = document.createElement('a');
+    righticon.className = 'mui-icon mui-icon-location bianji bian';
+    header.appendChild(righticon);
+
+    ; (function () {
+        var shareBtn = document.getElementById('share-btn')
+        // 只要把你想要点击打开分享功能的按钮加上id="share-btn"就好啦
+        var shareBox = document.getElementById('share')
+        var backDrop = shareBox.getElementsByClassName('back-drop')[0]
+
+        var wechatTimeline = document.getElementById('wechatTimeline')
+        var qqFriend = document.getElementById('qqFriend')
+        var qZone = document.getElementById('qZone')
+        var wechatFriend = document.getElementById('wechatFriend')
+        var weibo = document.getElementById('weibo')
+        var copyLink = document.getElementById('copyLink')
+
+        var copyLinkBox = document.getElementById('copy-link-box')
+        var copyLinkA = document.getElementById('copy-link-a')
+        var copyLinkBackDrop = copyLinkBox.getElementsByClassName('back-drop')[0]
+
+        var nativeShare = new NativeShare()
+        shareBtn.addEventListener('click', function () {
+            shareBox.classList.add('show')
+        })
+        backDrop.addEventListener('click', function () {
+            shareBox.classList.remove('show')
+        })
+        copyLink.addEventListener('click', function () {
+            shareBox.classList.remove('show')
+            copyLinkBox.classList.add('show')
+            copyLinkA.innerText = window.location.href
+        })
+        copyLinkBackDrop.addEventListener('click', function () {
+            copyLinkBox.classList.remove('show')
+        })
+
+
+        function shareFn(method) {
+            nativeShare.setShareData({
+                icon: 'http://home1.img.focus.cn/bp_14e9c99660134769bfed2f4ba5086798',
+                link: window.location.href,
+                title: document.title,
+                desc: document.title,
+                from: document.title,
+            })
+
+            // 唤起浏览器原生分享组件(如果在微信中不会唤起，此时call方法只会设置文案。类似setShareData)
+            try {
+                nativeShare.call(method)
+                // 如果是分享到微信则需要 nativeShare.call('wechatFriend')
+                // 类似的命令下面有介绍
+            } catch (err) {
+                // 如果不支持，你可以在这里做降级处理
+                shareBox.classList.remove('show')
+                copyLinkBox.classList.add('show')
+                copyLinkA.innerText = window.location.href
+            }
+            shareBox.classList.remove('show')
+        }
+
+        wechatTimeline.addEventListener('click', shareFn.bind(this, 'wechatTimeline'))
+        qqFriend.addEventListener('click', shareFn.bind(this, 'qqFriend'))
+        qZone.addEventListener('click', shareFn.bind(this, 'qZone'))
+        wechatFriend.addEventListener('click', shareFn.bind(this, 'wechatFriend'))
+        weibo.addEventListener('click', shareFn.bind(this, 'weibo'))
+        $("#copyLink").on('top', (function () {
+
+        }))
+        $(".clc").on('tap',(function () {
+            $(this).toggleClass("act")
+        }))   
+        $(".cancel").on('tap',(function () {
+            $(this).parents(".item").children("ul").children("li").removeClass("act");
+            $(".item").hide();
+        }))
+        $(".confirm").on('tap',(function () {
+            $(".item").hide();
+        }))
+        $(".quanbu1").on('tap',(function () {
+            if ($(this).hasClass("act")) {
+                $(this).siblings("li").addClass("act");
+            } else {
+                $(this).siblings("li").removeClass("act");
+            }
+        }))
+        $(".quanbu2").on('tap',(function () {
+            if ($(this).hasClass("act")) {
+                $(this).siblings("li").addClass("act");
+            } else {
+                $(this).siblings("li").removeClass("act");
+            }
+        }))
+        $(".quanbu3").on('tap',(function () {
+            if ($(this).hasClass("act")) {
+                $(this).siblings("li").addClass("act");
+            } else {
+                $(this).siblings("li").removeClass("act");
+            }
+        }))
+
+        $(".posit1").on('tap',(function () {
+            $(".item2").hide();
+            $(".item3").hide();
+            $(".item1").show();
+        }))
+        $(".posit2").on('tap',(function () {
+            $(".item1").hide();
+            $(".item3").hide();
+            $(".item2").show();
+        }))
+        $(".posit3").on('tap',(function () {
+            $(".item1").hide();
+            $(".item2").hide();
+            $(".item3").show();
+
+        }))
+        $(".bian").on('tap',(function () {
+            window.location.href = './map.html';
+        }))
+        $(".city").on('tap',(function () {
+            window.location.href = './select.html';
+        }))
+        $(".close").on('tap',(function () {
+            $("#share").removeClass("show");
+        }))
+
+
+
+    })();
+
+</script>
+
+</html>

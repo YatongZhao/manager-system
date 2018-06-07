@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/mui.css">
+  <link rel="stylesheet" href="./css/map.css">
+  <link rel="stylesheet" href="./css/tab.css">
+  <script src="./js/jquery-2.1.4.min.js"></script>
+
+  <style>
+    @media screen and (min-width:320px) {
+      html,
+      body {
+        font-size: 16px;
+      }
+      #dituContent {
+        height: 29rem;
+      }
+    }
+
+    @media screen and (min-width:360px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 29rem;
+      }
+    }
+
+    @media screen and (min-width:412px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 30rem;
+      }
+    }
+
+    @media screen and (min-height:667px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 30.5rem;
+      }
+    }
+
+    @media screen and (min-height:732px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 34rem;
+      }
+    }
+
+    @media screen and (min-height:812px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 38.5rem;
+      }
+    }
+
+    @media screen and (min-width:414px) {
+      html,
+      body {
+        font-size: 18px;
+      }
+      #dituContent {
+        height: 34.3rem;
+      }
+    }
+
+    @media screen and (min-width:750px) {
+      html,
+      body {
+        font-size: 37.5px;
+      }
+    }
+
+    @media screen and (max-width:320px) {
+      .tab li {
+        width: 6.4rem;
+        line-height: 1.8rem;
+        padding: 0;
+      }
+      .mui-search .mui-placeholder {
+        font-size: 15px;
+      }
+      .mui-bar .mui-pull-left .mui-icon {
+        font-size: 26px;
+      }
+      .mui-bar .mui-btn .mui-icon {
+        top: 3px;
+      }
+      .mui-bar .mui-btn {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width:360px) {
+      .tab .kuan {
+        width: 6rem;
+      }
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .iw_poi_title {
+      color: #CC5522;
+      font-size: 14px;
+      font-weight: bold;
+      overflow: hidden;
+      padding-right: 13px;
+      white-space: nowrap
+    }
+
+    .iw_poi_content {
+      font: 12px arial, sans-serif;
+      overflow: visible;
+      padding-top: 4px;
+      white-space: -moz-pre-wrap;
+      word-wrap: break-word
+    }
+  </style>
+  <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> -->
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F2e33e0a35ca0f8c09428c09d9f554bb"></script>
+
+
+</head>
+
+<body>
+  <div class="header">
+    <div class="left back">
+      <i class="iconfont">&#xe65b;</i>
+    </div>
+    <div class="search">
+      地图找资源
+    </div>
+    <div class="right"><span>重置</span></div>
+
+  </div>
+  <div>
+    <div class="mui-segmented-control">
+      <a class="mui-control-item posit1">
+				选择区县
+			</a>
+      <a class="mui-control-item posit2">
+				社区类型
+			</a>
+      <a class="mui-control-item posit3">
+				选择商圈
+			</a>
+    </div>
+  </div>
+  <div>
+
+    <div class="item1 item">
+      <ul class="tab">
+        <li class="mui-table-view-cell clc quanbu1">
+          全部
+        </li>
+        <li class="mui-table-view-cell clc">
+          朝阳区
+        </li>
+        <li class="mui-table-view-cell clc">
+          海淀区
+        </li>
+        <li class="mui-table-view-cell clc">
+          石景山区
+        </li>
+        <li class="mui-table-view-cell clc">
+          丰台区
+        </li>
+      </ul>
+      <div class="select">
+        <div class="cancel">取消</div>
+        <div class="confirm">确定</div>
+      </div>
+    </div>
+    <div class="item2 item">
+      <ul class="tab">
+        <li class="mui-table-view-cell clc quanbu2 kuan">
+          全部
+        </li>
+        <li class="mui-table-view-cell clc kuan">
+          A-AP 高级公寓
+        </li>
+        <li class="mui-table-view-cell clc kuan">
+          B-AP 商住楼
+        </li>
+        <li class="mui-table-view-cell clc kuan">
+          PLAZA 写字楼
+        </li>
+        <li class="mui-table-view-cell clc kuan">
+          R-AP 社区
+        </li>
+      </ul>
+      <div class="select">
+        <div class="cancel">取消</div>
+        <div class="confirm">确定</div>
+      </div>
+    </div>
+    <div class="item3 item">
+      <ul class="tab">
+        <li class="mui-table-view-cell  clc quanbu3">
+          全部
+        </li>
+        <li class="mui-table-view-cell clc">
+          商圈名称
+        </li>
+        <li class="mui-table-view-cell clc">
+          商圈名称
+        </li>
+        <li class="mui-table-view-cell clc">
+          商圈名称
+        </li>
+        <li class="mui-table-view-cell clc">
+          商圈名称
+        </li>
+      </ul>
+      <div class="select">
+        <div class="cancel">取消</div>
+        <div class="confirm">确定</div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;border:#ccc solid 1px;" id="dituContent"></div>
+  <div class="foot">
+    <div class="top">
+      媒体管理云SAAS 媒之易 @2018
+    </div>
+    <div class="bottom">
+      <div class="left">
+        王封样 销售经理
+      </div>
+      <div class="right">
+        <i class="iconfont">&#xe627;</i> 免费咨询
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  //创建和初始化地图函数：
+  function initMap() {
+    createMap();//创建地图
+    // setMapEvent();//设置地图事件
+    // addMapControl();//向地图添加控件
+  }
+  // var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+
+  //创建地图函数：
+  function createMap() {
+    var mp = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+    // 百度地图API功能
+    // var mp = new BMap.Map("allmap");//创建地图实例
+    mp.centerAndZoom(new BMap.Point(116.3964, 39.9093), 15);
+    //地图初始化，设置中心点坐标和地图级别。地图必须经过初始化才可以执行其他操作
+    //启用鼠标滚轮放大缩小
+    mp.enableScrollWheelZoom();
+    //1、定义构造函数并继承Overlay
+    //定义自定义覆盖物的构造函数  
+    function ComplexCustomOverlay(point) {
+      this._point = point;
+
+    }
+    // 继承API的BMap.Overlay  
+    ComplexCustomOverlay.prototype = new BMap.Overlay();
+    //2、初始化自定义覆盖物
+    // 实现初始化方法  
+    ComplexCustomOverlay.prototype.initialize = function (map) {
+      // 保存map对象实例 
+      this._map = map;
+      // 创建div元素，作为自定义覆盖物的容器  
+      var div = this._div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);//聚合功能?
+      // 可以根据参数设置元素外观
+      div.style.height = "43px";
+      div.style.width = "178px";
+
+      var arrow = this._arrow = document.createElement("img");
+      arrow.src = "./images/location@2x.png";
+      // arrow.style.width = "35px";
+      // arrow.style.height = "35px";
+      arrow.style.top = "22px";
+      arrow.style.left = "10px";
+      div.appendChild(arrow);
+      var message = this._message = document.createElement("span");
+      message.innerHTML = "天安门大厦 10块点位";
+      message.style.width = "120px";
+      message.style.height = "25px";
+      message.style.display = "inline-block";
+      message.style.backgroundColor = "#ff8811";
+      message.style.opacity = "0.7";
+      message.style.padding = "2px 6px";
+      message.style.borderRadius = "10px";
+      message.style.position = "absolute";
+      message.style.top = "0px";
+      message.style.left = "24px";
+      message.style.fontSize = "0.7rem";
+      
+      div.appendChild(message);
+
+
+
+      // 将div添加到覆盖物容器中  
+      mp.getPanes().labelPane.appendChild(div);//getPanes(),返回值:MapPane,返回地图覆盖物容器列表  labelPane呢???
+      // 需要将div元素作为方法的返回值，当调用该覆盖物的show、  
+      // hide方法，或者对覆盖物进行移除时，API都将操作此元素。
+      return div;
+    }
+
+    //3、绘制覆盖物
+    // 实现绘制方法
+    ComplexCustomOverlay.prototype.draw = function () {
+      var map = this._map;
+      var pixel = map.pointToOverlayPixel(this._point);
+      this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+      this._div.style.top = pixel.y - 30 + "px";
+    }
+
+
+
+    //4、自定义覆盖物添加事件方法
+    ComplexCustomOverlay.prototype.addEventListener = function (event, fun) {
+      this._div['on' + event] = fun;
+    }
+
+
+    var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(116.407845, 39.914101));
+    mp.addOverlay(myCompOverlay);//将标注添加到地图中
+
+
+    //5、 为自定义覆盖物添加点击事件
+    myCompOverlay.addEventListener('click', function () {
+      alert("点击图标");
+      //hide_show();
+    });
+
+    var show = 0;
+
+    function hide_show() {
+
+      if (show == 0) {
+        myCompOverlay.hide();
+        show = 1;
+      } else {
+        myCompOverlay.show();
+        show = 0;
+      }
+    }
+
+  }
+
+  //地图事件设置函数：
+  // function setMapEvent() {
+  //   map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+  //   map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+  //   map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+  //   map.enableKeyboard();//启用键盘上下左右键移动地图
+  // }
+
+  // //地图控件添加函数：
+  // function addMapControl() {
+  //   //向地图中添加缩放控件
+  //   var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+  //   map.addControl(ctrl_nav);
+  //   //向地图中添加缩略图控件
+  //   var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+  //   map.addControl(ctrl_ove);
+  //   //向地图中添加比例尺控件
+  //   var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+  //   map.addControl(ctrl_sca);
+  // }
+
+
+  initMap();//创建和初始化地图
+  $(".clc").click(function () {
+    $(this).toggleClass("act")
+  })
+  $(".cancel").click(function () {
+    $(this).parents(".item").children("ul").children("li").removeClass("act");
+    $(".item").hide();
+  })
+  $(".confirm").click(function () {
+    $(".item").hide();
+  })
+  $(".quanbu1").click(function () {
+    if ($(this).hasClass("act")) {
+      $(this).siblings("li").addClass("act");
+    } else {
+      $(this).siblings("li").removeClass("act");
+    }
+  })
+  $(".quanbu2").click(function () {
+    if ($(this).hasClass("act")) {
+      $(this).siblings("li").addClass("act");
+    } else {
+      $(this).siblings("li").removeClass("act");
+    }
+  })
+  $(".quanbu3").click(function () {
+    if ($(this).hasClass("act")) {
+      $(this).siblings("li").addClass("act");
+    } else {
+      $(this).siblings("li").removeClass("act");
+    }
+  })
+
+  $(".posit1").click(function () {
+    $(".item2").hide();
+    $(".item3").hide();
+    $(".item1").show();
+  })
+  $(".posit2").click(function () {
+    $(".item1").hide();
+    $(".item3").hide();
+    $(".item2").show();
+  })
+  $(".posit3").click(function () {
+    $(".item1").hide();
+    $(".item2").hide();
+    $(".item3").show();
+
+  })
+  $(".back").click(function () {
+    window.history.back(-1);
+  })
+
+</script>
+
+</html>

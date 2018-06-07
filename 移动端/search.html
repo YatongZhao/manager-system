@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/mui.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <script src="./js/mui.js"></script>
+    <style>
+        @media screen and (min-width:320px) {
+            html,
+            body {
+                font-size: 16px;
+            }
+            .mui-search .mui-placeholder {
+                line-height: 31px;
+            }
+            .maybe span {
+                width: 31%;
+            }
+        }
+
+        @media screen and (max-width:320px) {
+            .header .mui-active{
+                top:0.3rem;
+            }
+        }
+
+        @media screen and (min-width:360px) {
+            html,
+            body {
+                font-size: 18px;
+            }
+            .header .mui-active {
+                top: 0.45rem;
+                line-height: 1.2rem;
+            }
+            .mui-search .mui-placeholder {
+                line-height: 36px;
+            }
+        }
+
+        @media screen and (min-width:750px) {
+            html,
+            body {
+                font-size: 37.5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="mui-input-row mui-search">
+            <input type="search" class="mui-input-clear" placeholder="请输入社区名称">
+        </div>
+        <span class="quxiao">取消</span>
+    </div>
+    <div class="maybe">
+        <p>您可能搜索的社区</p>
+        <span>中青大厦</span>
+        <span>石榴园社区</span>
+        <span>团结湖</span>
+        <span>金茂大厦</span>
+        <span>三里屯社区</span>
+        <span>呼家楼</span>
+    </div>
+</body>
+
+</html>
