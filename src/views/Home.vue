@@ -1,5 +1,8 @@
 <docs>
   ## 这是首页组件
+  ```
+  props: 
+  ```
 </docs>
 
 <template>
